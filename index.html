@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valorant Fan Page – Landing Page giới thiệu game</title>
+  <meta name="description" content="Landing page giới thiệu tựa game FPS chiến thuật 5v5 Valorant: Agent, bản đồ và lối chơi. Trang demo học tập.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+
+  <!-- Font Roboto (Google Fonts tự tải bộ ký tự tiếng Việt qua unicode-range) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Thư viện hiệu ứng: Animate.css và AOS (CSS) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+  <!-- CSS của trang -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+
+  <!-- HEADER: logo + menu (menu mobile làm hoàn toàn bằng CSS, không JavaScript) -->
+  <header class="site-header">
+    <a class="logo" href="#hero">
+      <img src="assets/images/logo.svg" alt="Logo Valorant Fan Page" width="36" height="36">
+      <span>Valorant<strong>Fan</strong></span>
+    </a>
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-button"><span class="sr-only">Mở hoặc đóng menu</span></label>
+
+    <nav aria-label="Điều hướng chính">
+      <ul>
+        <li><a href="#gioi-thieu">Giới thiệu</a></li>
+        <li><a href="#agents">Agent</a></li>
+        <li><a href="#ban-do">Bản đồ</a></li>
+        <li><a href="#loi-choi">Lối chơi</a></li>
+        <li><a href="#cong-dong">Cộng đồng</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow animate__animated animate__fadeInDown">Game FPS chiến thuật 5v5</p>
+      <h1 id="hero-title" class="animate__animated animate__fadeInDown">
+        Chiến thuật. Kỹ năng. <span>Chiến thắng.</span>
+      </h1>
+      <p class="hero-desc animate__animated animate__fadeInUp animate__delay-1s">
+        Mỗi hiệp đấu là một ván cờ tốc độ cao: chọn Agent, phối hợp kỹ năng với đồng đội và bắn thật chuẩn để giành chiến thắng.
+      </p>
+      <ul class="hero-actions">
+        <li class="animate__animated animate__zoomIn animate__delay-1s">
+          <a class="btn btn-primary" href="https://playvalorant.com/vi-vn/" target="_blank" rel="noopener">Chơi miễn phí</a>
+        </li>
+        <li class="animate__animated animate__zoomIn animate__delay-2s">
+          <a class="btn btn-outline" href="#agents">Khám phá Agent</a>
+        </li>
+      </ul>
+      <ul class="hero-stats animate__animated animate__fadeInUp animate__delay-2s">
+        <li><strong>5v5</strong><span>Đội hình mỗi bên</span></li>
+        <li><strong>13</strong><span>Hiệp để thắng trận</span></li>
+        <li><strong>4</strong><span>Vai trò Agent</span></li>
+      </ul>
+    </section>
+
+    <!-- GIỚI THIỆU -->
+    <section id="gioi-thieu" class="section" aria-labelledby="gioi-thieu-title">
+      <header class="section-head" data-aos="fade-up">
+        <h2 id="gioi-thieu-title">Giới thiệu game</h2>
+        <p>Valorant là game bắn súng góc nhìn thứ nhất theo đội, kết hợp bắn súng chính xác với kỹ năng đặc trưng của từng Agent.</p>
+      </header>
+      <ul class="grid grid-4">
+        <li data-aos="fade-up" data-aos-delay="0">
+          <article class="card" tabindex="0">
+            <figure><img src="assets/images/feature-01.svg" alt="Hai hàng người chơi đối đầu 5 đấu 5" width="400" height="240" loading="lazy"></figure>
+            <h3>Đối kháng 5v5</h3>
+            <p>Hai đội năm người luân phiên tấn công và phòng thủ qua từng hiệp đấu.</p>
+          </article>
+        </li>
+        <li data-aos="fade-up" data-aos-delay="100">
+          <article class="card" tabindex="0">
+            <figure><img src="assets/images/feature-02.svg" alt="Biểu tượng kim cương đại diện cho Agent" width="400" height="240" loading="lazy"></figure>
+            <h3>Agent đa dạng</h3>
+            <p>Mỗi Agent có bộ kỹ năng riêng, mở ra nhiều cách phối hợp chiến thuật.</p>
+          </article>
+        </li>
+        <li data-aos="fade-up" data-aos-delay="200">
+          <article class="card" tabindex="0">
+            <figure><img src="assets/images/feature-03.svg" alt="Tâm ngắm biểu thị bắn súng chính xác" width="400" height="240" loading="lazy"></figure>
+            <h3>Bắn súng chuẩn xác</h3>
+            <p>Điểm xuất phát công bằng, kỹ năng ngắm bắn quyết định kết quả giao tranh.</p>
+          </article>
+        </li>
+        <li data-aos="fade-up" data-aos-delay="300">
+          <article class="card" tabindex="0">
+            <figure><img src="assets/images/feature-04.svg" alt="Đồng hồ đếm ngược của Spike" width="400" height="240" loading="lazy"></figure>
+            <h3>Mục tiêu Spike</h3>
+            <p>Bên tấn công đặt Spike, bên phòng thủ phải gỡ bỏ hoặc tiêu diệt đối thủ.</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <!-- AGENTS -->
+    <section id="agents" class="section section-alt" aria-labelledby="agents-title">
+      <header class="section-head" data-aos="fade-up">
+        <h2 id="agents-title">Chọn Agent của bạn</h2>
+        <p>Bốn vai trò, bốn lối chơi. Chọn Agent hợp với phong cách của bạn.</p>
+      </header>
+      <ul class="grid grid-4">
+        <li data-aos="zoom-in" data-aos-delay="0">
+          <article class="card card-agent" tabindex="0">
+            <figure><img src="https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/fullportrait.png" alt="Ảnh Agent Jett trong game Valorant" width="400" height="500" loading="lazy"></figure>
+            <p class="role role-duelist">Duelist</p>
+            <h3>Jett</h3>
+            <p>Nhanh nhẹn, lướt và bật nhảy để giành không gian giao tranh.</p>
+          </article>
+        </li>
+        <li data-aos="zoom-in" data-aos-delay="100">
+          <article class="card card-agent" tabindex="0">
+            <figure><img src="https://media.valorant-api.com/agents/eb93336a-449b-9c1b-0a54-a891f7921d69/fullportrait.png" alt="Ảnh Agent Phoenix trong game Valorant" width="400" height="500" loading="lazy"></figure>
+            <p class="role role-duelist">Duelist</p>
+            <h3>Phoenix</h3>
+            <p>Dùng lửa để gây sát thương và hồi máu, tự mở đường vào site.</p>
+          </article>
+        </li>
+        <li data-aos="zoom-in" data-aos-delay="200">
+          <article class="card card-agent" tabindex="0">
+            <figure><img src="https://media.valorant-api.com/agents/569fdd95-4d10-43ab-ca70-79becc718b46/fullportrait.png" alt="Ảnh Agent Sage trong game Valorant" width="400" height="500" loading="lazy"></figure>
+            <p class="role role-sentinel">Sentinel</p>
+            <h3>Sage</h3>
+            <p>Dựng tường chắn, làm chậm kẻ địch và hồi sinh đồng đội.</p>
+          </article>
+        </li>
+        <li data-aos="zoom-in" data-aos-delay="300">
+          <article class="card card-agent" tabindex="0">
+            <figure><img src="https://media.valorant-api.com/agents/1e58de9c-4950-5125-93e9-a0aee9f98746/fullportrait.png" alt="Ảnh Agent Killjoy trong game Valorant" width="400" height="500" loading="lazy"></figure>
+            <p class="role role-sentinel">Sentinel</p>
+            <h3>Killjoy</h3>
+            <p>Đặt tháp canh và bẫy để khóa chặt một khu vực.</p>
+          </article>
+        </li>
+        <li data-aos="zoom-in" data-aos-delay="0">
+          <article class="card card-agent" tabindex="0">
+            <figure><img src="https://media.valorant-api.com/agents/8e253930-4c05-31dd-1b6c-968525494517/fullportrait.png" alt="Ảnh Agent Omen trong game Valorant" width="400" height="500" loading="lazy"></figure>
+            <p class="role role-controller">Controller</p>
+            <h3>Omen</h3>
+            <p>Che tầm nhìn bằng khói và dịch chuyển để bất ngờ tập kích.</p>
+          </article>
+        </li>
+        <li data-aos="zoom-in" data-aos-delay="100">
+          <article class="card card-agent" tabindex="0">
+            <figure><img src="https://media.valorant-api.com/agents/9f0d8ba9-4140-b941-57d3-a7ad57c6b417/fullportrait.png" alt="Ảnh Agent Brimstone trong game Valorant" width="400" height="500" loading="lazy"></figure>
+            <p class="role role-controller">Controller</p>
+            <h3>Brimstone</h3>
+            <p>Gọi khói và hỗ trợ từ xa để kiểm soát nhịp độ trận đấu.</p>
+          </article>
+        </li>
+        <li data-aos="zoom-in" data-aos-delay="200">
+          <article class="card card-agent" tabindex="0">
+            <figure><img src="https://media.valorant-api.com/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/fullportrait.png" alt="Ảnh Agent Sova trong game Valorant" width="400" height="500" loading="lazy"></figure>
+            <p class="role role-initiator">Initiator</p>
+            <h3>Sova</h3>
+            <p>Thu thập thông tin bằng mũi tên trinh sát để dẫn dắt đội hình.</p>
+          </article>
+        </li>
+        <li data-aos="zoom-in" data-aos-delay="300">
+          <article class="card card-agent" tabindex="0">
+            <figure><img src="https://media.valorant-api.com/agents/a3bfb853-43b2-7238-a4f1-ad90e9e46bcc/fullportrait.png" alt="Ảnh Agent Reyna trong game Valorant" width="400" height="500" loading="lazy"></figure>
+            <p class="role role-duelist">Duelist</p>
+            <h3>Reyna</h3>
+            <p>Hạ gục đối thủ để hồi phục, càng thắng giao tranh càng mạnh.</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <!-- BẢN ĐỒ -->
+    <section id="ban-do" class="section" aria-labelledby="ban-do-title">
+      <header class="section-head" data-aos="fade-up">
+        <h2 id="ban-do-title">Bản đồ</h2>
+        <p>Mỗi bản đồ có cách bố trí site và lối đi riêng.</p>
+      </header>
+      <ul class="grid grid-3">
+        <li data-aos="fade-right" data-aos-delay="0">
+          <article class="card card-map" tabindex="0">
+            <figure><img src="https://media.valorant-api.com/maps/2c9d57ec-4431-9c5e-2939-8f9ef6dd5cba/listviewicon.png" alt="Ảnh bản đồ Bind trong game Valorant" width="600" height="400" loading="lazy"></figure>
+            <h3>Bind</h3>
+            <p>Có các cổng dịch chuyển nối hai bên bản đồ, tạo nhiều đường vòng bất ngờ.</p>
+          </article>
+        </li>
+        <li data-aos="fade-up" data-aos-delay="100">
+          <article class="card card-map" tabindex="0">
+            <figure><img src="https://media.valorant-api.com/maps/2bee0dc9-4ffe-519b-1cbd-7fbe763a6047/listviewicon.png" alt="Ảnh bản đồ Haven trong game Valorant" width="600" height="400" loading="lazy"></figure>
+            <h3>Haven</h3>
+            <p>Ba site thay vì hai, buộc đội phòng thủ phải luân chuyển liên tục.</p>
+          </article>
+        </li>
+        <li data-aos="fade-left" data-aos-delay="200">
+          <article class="card card-map" tabindex="0">
+            <figure><img src="https://media.valorant-api.com/maps/d960549e-485c-e861-8d71-aa9d1aed12a2/listviewicon.png" alt="Ảnh bản đồ Split trong game Valorant" width="600" height="400" loading="lazy"></figure>
+            <h3>Split</h3>
+            <p>Địa hình nhiều tầng cao thấp, có dây leo nối các khu vực.</p>
+          </article>
+        </li>
+        <li data-aos="fade-right" data-aos-delay="0">
+          <article class="card card-map" tabindex="0">
+            <figure><img src="https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/listviewicon.png" alt="Ảnh bản đồ Ascent trong game Valorant" width="600" height="400" loading="lazy"></figure>
+            <h3>Ascent</h3>
+            <p>Khu trung tâm rộng với cửa có thể đóng lại để thay đổi cục diện.</p>
+          </article>
+        </li>
+        <li data-aos="fade-up" data-aos-delay="100">
+          <article class="card card-map" tabindex="0">
+            <figure><img src="https://media.valorant-api.com/maps/e2ad5c54-4114-a870-9641-8ea21279579a/listviewicon.png" alt="Ảnh bản đồ Icebox trong game Valorant" width="600" height="400" loading="lazy"></figure>
+            <h3>Icebox</h3>
+            <p>Nhiều tầng và đường di chuyển nhanh, đề cao việc kiểm soát độ cao.</p>
+          </article>
+        </li>
+        <li data-aos="fade-left" data-aos-delay="200">
+          <article class="card card-map" tabindex="0">
+            <figure><img src="https://media.valorant-api.com/maps/2fe4ed3a-450a-948b-6d6b-e89a78e680a9/listviewicon.png" alt="Ảnh bản đồ Lotus trong game Valorant" width="600" height="400" loading="lazy"></figure>
+            <h3>Lotus</h3>
+            <p>Ba site cùng các cửa cơ chế, thưởng cho đội biết phối hợp xoay vòng.</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <!-- LỐI CHƠI -->
+    <section id="loi-choi" class="section section-alt" aria-labelledby="loi-choi-title">
+      <header class="section-head" data-aos="fade-up">
+        <h2 id="loi-choi-title">Lối chơi</h2>
+        <p>Một trận đấu là chuỗi các hiệp ngắn, mỗi hiệp gồm bốn giai đoạn quen thuộc.</p>
+      </header>
+      <article class="gameplay" data-aos="fade-right">
+        <figure>
+          <img src="assets/images/gameplay.svg" alt="Dòng thời gian bốn bước của một hiệp đấu" width="800" height="450" loading="lazy">
+          <figcaption>Bốn bước của một hiệp đấu</figcaption>
+        </figure>
+        <ol>
+          <li><strong>Mua đồ:</strong> dùng Credits mua vũ khí, giáp và kỹ năng.</li>
+          <li><strong>Triển khai:</strong> đội tấn công tiến vào, đội thủ chiếm vị trí.</li>
+          <li><strong>Giao tranh:</strong> đặt hoặc gỡ Spike, phối hợp kỹ năng để hạ đối thủ.</li>
+          <li><strong>Kết thúc hiệp:</strong> đội đầu tiên thắng 13 hiệp sẽ thắng trận.</li>
+        </ol>
+      </article>
+      <aside class="tips" data-aos="fade-left" aria-labelledby="tips-title">
+        <h3 id="tips-title">Mẹo cho người mới</h3>
+        <ul>
+          <li>Chọn Agent hợp vai trò của đội trước khi tìm Agent yêu thích.</li>
+          <li>Luôn giữ liên lạc với đồng đội, một mình rất khó thắng giao tranh.</li>
+          <li>Tập ngắm ở chế độ luyện tập để làm quen độ nhạy chuột.</li>
+          <li>Quản lý Credits: biết lúc nào nên mua và lúc nào nên tiết kiệm.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- CỘNG ĐỒNG / CTA -->
+    <section id="cong-dong" class="section cta" aria-labelledby="cong-dong-title">
+      <header class="section-head" data-aos="zoom-in">
+        <h2 id="cong-dong-title">Sẵn sàng vào trận?</h2>
+        <p>Để lại email để nhận tin về game và cộng đồng. Biểu mẫu chỉ là giao diện minh họa, không gửi dữ liệu đi đâu.</p>
+      </header>
+      <form class="signup" action="#" method="get" data-aos="fade-up">
+        <label for="email">Email của bạn</label>
+        <input type="email" id="email" name="email" placeholder="ten@example.com" required>
+        <button type="submit" class="btn btn-primary">Đăng ký</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <section aria-labelledby="footer-about">
+      <h2 id="footer-about">Valorant Fan Page</h2>
+      <p>Trang landing demo giới thiệu game, phục vụ bài kiểm tra giữa kỳ môn Thiết kế Web.</p>
+    </section>
+    <section aria-labelledby="footer-contact">
+      <h2 id="footer-contact">Liên hệ</h2>
+      <address>
+        Nguyễn Minh Thiên – MSSV 125000493<br>
+        Khoa Công nghệ thông tin, Trường Đại học Lạc Hồng<br>
+        <a href="mailto:email@example.com">email@example.com</a>
+      </address>
+    </section>
+    <nav aria-labelledby="footer-links">
+      <h2 id="footer-links">Liên kết</h2>
+      <ul>
+        <li><a href="https://playvalorant.com/vi-vn/" target="_blank" rel="noopener">Trang chủ Valorant</a></li>
+        <li><a href="#gioi-thieu">Giới thiệu</a></li>
+        <li><a href="#agents">Agent</a></li>
+        <li><a href="#ban-do">Bản đồ</a></li>
+      </ul>
+    </nav>
+    <p class="copyright">
+      © 2026 Nguyễn Minh Thiên. Trang demo học tập, phi thương mại. VALORANT là thương hiệu của Riot Games. Hình ảnh Agent và bản đồ thuộc Riot Games, nguồn: valorant-api.com.
+    </p>
+  </footer>
+
+  <!-- Thư viện AOS (CDN) và dòng khởi tạo bắt buộc của thư viện, không phải mã JavaScript tự viết -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 800, once: true, offset: 120 });</script>
+</body>
+</html>

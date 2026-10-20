@@ -1,0 +1,743 @@
+/* =========================================================
+   VALORANT FAN PAGE – style.css
+   Mục lục: 1) Biến CSS  2) Reset  3) Header/Nav  4) Hero
+            5) Section chung  6) Card & Grid  7) Lối chơi
+            8) CTA/Form  9) Footer  10) Responsive  11) Giảm chuyển động
+   ========================================================= */
+
+/* 1) CSS VARIABLES: quản lý màu, font, khoảng cách cho toàn trang */
+:root {
+  /* Màu sắc */
+  --primary-color: #ff4655;
+  --primary-dark: #d93a48;
+  --bg-dark: #0f1923;
+  --bg-alt: #131f2b;
+  --bg-card: #1a2733;
+  --text-color: #ece8e1;
+  --text-muted: #a7b1ba;
+  --border-color: rgba(236, 232, 225, 0.14);
+  --role-duelist: #ff4655;
+  --role-controller: #8b7cff;
+  --role-initiator: #ffb44a;
+  --role-sentinel: #3fd0c9;
+
+  /* Font chữ (Roboto, hỗ trợ đầy đủ tiếng Việt) */
+  --font-heading: "Roboto", Arial, sans-serif;
+  --font-body: "Roboto", Arial, sans-serif;
+
+  /* Khoảng cách */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-xxl: 6rem;
+
+  /* Khác */
+  --cut: 14px;
+  --clip-cut: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
+  --transition: 0.25s ease;
+  --header-height: 68px;
+  /* Lề hai bên: nội dung rộng tối đa 1200px và căn giữa (không cần thẻ div bọc) */
+  --page-gutter: max(1rem, calc((100% - 1200px) / 2));
+}
+
+/* 2) RESET & NỀN TẢNG */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-dark);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 var(--space-xs);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+p {
+  margin: 0 0 var(--space-sm);
+}
+
+a {
+  color: inherit;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-sm);
+  top: -4rem;
+  z-index: 200;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--primary-color);
+  color: var(--bg-dark);
+  font-weight: 700;
+  transition: top var(--transition);
+}
+
+.skip-link:focus {
+  top: var(--space-xs);
+}
+
+/* 3) HEADER & NAV */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-height);
+  padding-inline: var(--page-gutter);
+  background: rgba(15, 25, 35, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 1.25rem;
+  font-weight: 300;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.logo strong {
+  color: var(--primary-color);
+  font-weight: 900;
+}
+
+.site-header nav ul {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.site-header nav a {
+  position: relative;
+  padding-block: var(--space-xs);
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color var(--transition);
+}
+
+.site-header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: var(--primary-color);
+  transition: width var(--transition);
+}
+
+.site-header nav a:hover,
+.site-header nav a:focus-visible {
+  color: var(--primary-color);
+}
+
+.site-header nav a:hover::after,
+.site-header nav a:focus-visible::after {
+  width: 100%;
+}
+
+/* Nút menu mobile: checkbox ẩn + label (kỹ thuật checkbox hack, không dùng JS) */
+.menu-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menu-button {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.menu-button::before {
+  content: "\2630";
+  font-size: 1.4rem;
+}
+
+.menu-toggle:checked + .menu-button::before {
+  content: "\2715";
+}
+
+.menu-button:hover,
+.menu-toggle:focus-visible + .menu-button {
+  border-color: var(--primary-color);
+  background: rgba(255, 70, 85, 0.12);
+}
+
+/* Focus rõ ràng cho mọi liên kết và nút */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+.card:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* 4) HERO */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 85vh;
+  padding: var(--space-xl) var(--page-gutter);
+  background:
+    linear-gradient(90deg, rgba(15, 25, 35, 0.92) 0%, rgba(15, 25, 35, 0.5) 60%, rgba(15, 25, 35, 0.2) 100%),
+    url("assets/images/hero-bg.svg") center / cover no-repeat;
+}
+
+.eyebrow {
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: var(--space-sm);
+  padding: 0.25rem 0.75rem;
+  border-left: 4px solid var(--primary-color);
+  background: rgba(255, 70, 85, 0.12);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+}
+
+.hero h1 {
+  max-width: 14ch;
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.hero h1 span {
+  color: var(--primary-color);
+}
+
+.hero-desc {
+  max-width: 52ch;
+  margin-block: var(--space-sm) var(--space-md);
+  color: var(--text-muted);
+  font-size: 1.125rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.hero-stats strong {
+  display: block;
+  color: var(--primary-color);
+  font-size: 2.25rem;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.hero-stats span {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Nút bấm */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2rem;
+  border: 2px solid var(--primary-color);
+  clip-path: var(--clip-cut);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), letter-spacing var(--transition);
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: var(--bg-dark);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: var(--text-color);
+  border-color: var(--text-color);
+  letter-spacing: 0.12em;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-color);
+}
+
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  background: var(--primary-color);
+  color: var(--bg-dark);
+  letter-spacing: 0.12em;
+}
+
+/* 5) SECTION CHUNG */
+.section {
+  padding: var(--space-xxl) var(--page-gutter);
+  scroll-margin-top: var(--header-height);
+}
+
+.section-alt {
+  background: var(--bg-alt);
+}
+
+.section-head {
+  max-width: 60ch;
+  margin-bottom: var(--space-lg);
+}
+
+.section h2 {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.section h2::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin-top: var(--space-xs);
+  background: var(--primary-color);
+}
+
+.section-head p {
+  color: var(--text-muted);
+}
+
+/* 6) CARD & GRID */
+.grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid > li {
+  transition: filter var(--transition);
+}
+
+.grid > li:hover,
+.grid > li:focus-within {
+  filter: drop-shadow(0 12px 22px rgba(255, 70, 85, 0.28));
+}
+
+.card {
+  height: 100%;
+  padding: 0 0 var(--space-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  clip-path: var(--clip-cut);
+  transition: transform var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-6px);
+  border-color: var(--primary-color);
+  background: #20303f;
+}
+
+.card figure {
+  margin: 0 0 var(--space-sm);
+  overflow: hidden;
+}
+
+.card figure img {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover figure img,
+.card:focus-visible figure img {
+  transform: scale(1.06);
+}
+
+.card h3 {
+  margin-inline: var(--space-md);
+  font-size: 1.35rem;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.card p {
+  margin-inline: var(--space-md);
+  margin-bottom: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.card .role {
+  display: inline-block;
+  margin: 0 var(--space-md) var(--space-xs);
+  padding: 0.1rem 0.6rem;
+  border: 1px solid currentColor;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.role-duelist { color: var(--role-duelist); }
+.role-controller { color: var(--role-controller); }
+.role-initiator { color: var(--role-initiator); }
+.role-sentinel { color: var(--role-sentinel); }
+
+/* Ảnh Agent và bản đồ lấy từ game (valorant-api.com) */
+.card-agent figure {
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(160deg, #2a3f55 0%, var(--bg-dark) 100%);
+}
+
+.card-agent figure img {
+  height: 100%;
+  object-position: top center;
+}
+
+.card-map figure {
+  aspect-ratio: 3 / 2;
+  background: var(--bg-dark);
+}
+
+.card-map figure img {
+  height: 100%;
+}
+
+/* 7) LỐI CHƠI: bài viết bên trái, aside bên phải */
+#loi-choi {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+#loi-choi .section-head {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.gameplay {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.gameplay figure {
+  flex: 1 1 280px;
+  margin: 0;
+}
+
+.gameplay figure img {
+  border: 1px solid var(--border-color);
+}
+
+.gameplay figcaption {
+  margin-top: var(--space-xs);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.gameplay ol {
+  flex: 1 1 260px;
+  padding-left: var(--space-md);
+}
+
+.gameplay li {
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-xs);
+}
+
+.gameplay li::marker {
+  color: var(--primary-color);
+  font-weight: 900;
+}
+
+.tips {
+  padding: var(--space-md);
+  border-left: 4px solid var(--primary-color);
+  background: var(--bg-card);
+}
+
+.tips h3 {
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.tips li {
+  position: relative;
+  padding-left: var(--space-md);
+  margin-bottom: var(--space-sm);
+  color: var(--text-muted);
+}
+
+.tips li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  background: var(--primary-color);
+  transform: rotate(45deg);
+}
+
+/* 8) CTA & FORM */
+.cta {
+  text-align: center;
+  background:
+    linear-gradient(rgba(15, 25, 35, 0.55), rgba(15, 25, 35, 0.55)),
+    url("assets/images/cta-bg.svg") center / cover no-repeat;
+}
+
+.cta .section-head {
+  margin-inline: auto;
+}
+
+.cta h2::after {
+  margin-inline: auto;
+}
+
+.signup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  align-items: center;
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.signup label {
+  flex: 1 1 100%;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+}
+
+.signup input {
+  flex: 1 1 260px;
+  min-width: 0;
+  padding: 0.85rem 1rem;
+  border: 2px solid var(--border-color);
+  background: rgba(15, 25, 35, 0.85);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.signup input:hover {
+  border-color: var(--text-muted);
+}
+
+.signup input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(255, 70, 85, 0.25);
+}
+
+/* 9) FOOTER */
+.site-footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-lg);
+  padding: var(--space-xl) var(--page-gutter) var(--space-md);
+  border-top: 4px solid var(--primary-color);
+  background: #0a121a;
+}
+
+.site-footer h2 {
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+.site-footer p,
+.site-footer address {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-style: normal;
+}
+
+.site-footer li {
+  margin-bottom: var(--space-xs);
+}
+
+.site-footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: var(--primary-color);
+}
+
+.site-footer .copyright {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* 10) RESPONSIVE */
+@media (max-width: 860px) {
+  .menu-button {
+    display: inline-flex;
+  }
+
+  .site-header nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    padding: var(--space-sm) var(--page-gutter) var(--space-md);
+    background: var(--bg-dark);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .menu-toggle:checked ~ nav {
+    display: block;
+  }
+
+  .site-header nav ul {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .site-header nav a {
+    display: block;
+    padding: 0.75rem 0;
+  }
+
+  #loi-choi {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding-block: var(--space-xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 80vh;
+  }
+
+  .hero-stats {
+    gap: var(--space-md);
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .hero-actions li {
+    flex: 1 1 100%;
+  }
+}
+
+/* 11) GIẢM CHUYỂN ĐỘNG cho người dùng bật tùy chọn trong hệ điều hành */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none;
+    transition: none;
+  }
+
+  [data-aos][data-aos][data-aos] {
+    opacity: 1;
+    transform: none;
+  }
+}

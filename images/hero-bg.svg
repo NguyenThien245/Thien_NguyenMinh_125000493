@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f1923"/><stop offset="1" stop-color="#1b2b3a"/></linearGradient>
+<radialGradient id="r" cx="0.75" cy="0.45" r="0.45"><stop offset="0" stop-color="#ff4655" stop-opacity="0.45"/><stop offset="1" stop-color="#ff4655" stop-opacity="0"/></radialGradient>
+<pattern id="p" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#fff" stroke-opacity="0.05"/></pattern>
+</defs>
+<rect width="1600" height="900" fill="url(#g)"/>
+<rect width="1600" height="900" fill="url(#p)"/>
+<rect width="1600" height="900" fill="url(#r)"/>
+<path d="M1000 -50H1250L850 950H600Z" fill="#ff4655" fill-opacity="0.12"/>
+<path d="M1250 -50H1330L930 950H850Z" fill="#ff4655" fill-opacity="0.3"/>
+<path d="M1200 200 1450 450 1200 700 950 450Z" fill="none" stroke="#ece8e1" stroke-opacity="0.25" stroke-width="3"/>
+<path d="M1200 280 1370 450 1200 620 1030 450Z" fill="none" stroke="#ff4655" stroke-opacity="0.6" stroke-width="2"/>
+<circle cx="1200" cy="450" r="6" fill="#ff4655"/>
+<path d="M0 760H1600" stroke="#ece8e1" stroke-opacity="0.08"/>
+</svg>
